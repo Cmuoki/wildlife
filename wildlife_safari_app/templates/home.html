@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Wildlife Safari</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background-image: url("{% static 'car.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* subtle dark overlay */
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .hero .btn-success {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero .btn-success:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        /* Cards */
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <!-- Hero Section -->
+    <div class="hero text-center">
+        <div class="container">
+            <h1 class="display-4">Welcome to Wildlife Safari Park</h1>
+            <p class="lead">Experience the wild like never before. Register now to begin your adventure!</p>
+            <a href="{% url 'register' %}" class="btn btn-lg btn-success">Register as Tourist</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mt-5">
+        <h2 class="text-center mb-4">Wildlife Highlights</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <img src="{% static 'lion.jpg' %}" class="card-img-top" alt="Lion">
+                    <div class="card-body">
+                        <h5 class="card-title">Lions</h5>
+                        <p class="card-text">Meet the kings of the jungle up close and personal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <img src="{% static 'elephant.jpg' %}" class="card-img-top" alt="Elephant">
+                    <div class="card-body">
+                        <h5 class="card-title">Elephants</h5>
+                        <p class="card-text">Get amazed by the size and intelligence of elephants.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <img src="{% static 'gf.jpg' %}" class="card-img-top" alt="Giraffe">
+                    <div class="card-body">
+                        <h5 class="card-title">Giraffes</h5>
+                        <p class="card-text">Experience the tallest land animals in their natural habitat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        &copy; 2025 Wildlife Safari Park | Contact: info@wildlifesafari.com
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+

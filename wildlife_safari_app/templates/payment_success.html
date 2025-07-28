@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Successful</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("{% static 'tor.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .message-box {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #FFD700; /* gold */
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #90ee90; /* light green */
+            text-shadow: 1px 1px 3px #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h1>Thank you for registering</h1>
+        <p>This is the WILD. Welcome to your SAFARI.</p>
+    </div>
+</body>
+</html>
+
+
