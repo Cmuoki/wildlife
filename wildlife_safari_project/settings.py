@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,7 +11,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'f55f416eeb72.ngrok-free.app',  # Ngrok domain
+    'f55f416eeb72.ngrok-free.app',  # Keep your ngrok domain
+    'wildlife-safari.onrender.com',  # Add your Render hostname
+    '.onrender.com'  # Wildcard for all Render subdomains (safety net)
 ]
 
 # Installed apps
