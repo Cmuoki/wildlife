@@ -91,9 +91,24 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'wildlife_safari_app' / 'static']
+# settings.py
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'wildlife_safari_app/static'),
+]
+
+# WhiteNoise configuration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Middleware (add this if missing)
+MIDDLEWARE = [
+    # ...
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Just after SecurityMiddleware
+    # ...
+]
 
 # Media files (for uploaded images)
 MEDIA_URL = '/media/'
