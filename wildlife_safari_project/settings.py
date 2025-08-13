@@ -105,9 +105,14 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Middleware (add this if missing)
 MIDDLEWARE = [
-    # ...
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Just after SecurityMiddleware
-    # ...
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Keep this where it is
+    'django.contrib.sessions.middleware.SessionMiddleware',  # NEW - Must come before auth
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # NEW - Required for admin
+    'django.contrib.messages.middleware.MessageMiddleware',  # NEW - Required for admin messages
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 # Media files (for uploaded images)

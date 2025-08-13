@@ -18,20 +18,29 @@ def about_view(request):
 # Contact page (now saves to database)
 def contact_view(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message_text = request.POST.get('message')
-        
-        # Save to database
-        Message.objects.create(
-            name=name,
-            email=email,
-            message=message_text
-        )
-        
-        messages.success(request, f"Thank you {name}! Your message has been sent.")
-        return redirect('contact')  # Redirect to prevent form resubmission
-        
+        try:
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            message_text = request.POST.get('message')
+            
+            if not all([name, email, message_text]):
+                messages.error(request, "All fields are required!")
+                return redirect('contact')
+                
+            # Save to database
+            Message.objects.create(
+                name=name,
+                email=email,
+                message=message_text
+            )
+            
+            messages.success(request, f"Thank you {name}! Your message has been sent.")
+            return redirect('contact')
+            
+        except Exception as e:
+            messages.error(request, f"Error: {str(e)}")
+            return redirect('contact')
+            
     return render(request, 'contact.html')
 
 # Tourist registration with MPESA STK push
