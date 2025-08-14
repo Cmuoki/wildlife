@@ -139,9 +139,9 @@ from django.contrib.auth import get_user_model
 def create_superuser(sender, **kwargs):
     if os.environ.get("RENDER_CREATE_SUPERUSER") == "1":
         User = get_user_model()
-        username = os.environ.get("DJANGO_SUPERUSER_USERNAME", "admin")
-        email = os.environ.get("DJANGO_SUPERUSER_EMAIL", "admin@example.com")
-        password = os.environ.get("DJANGO_SUPERUSER_PASSWORD", "adminpass123")
+        username = os.environ.get("DJANGO_SUPERUSER_USERNAME", "allan")
+        email = os.environ.get("DJANGO_SUPERUSER_EMAIL", "allan@gmail.com")
+        password = os.environ.get("DJANGO_SUPERUSER_PASSWORD", "allan123456")
         if not User.objects.filter(username=username).exists():
             User.objects.create_superuser(username=username, email=email, password=password)
             print(f"Superuser '{username}' created successfully.")
