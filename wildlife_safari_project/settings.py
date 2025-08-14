@@ -132,18 +132,17 @@ MPESA_SHORTCODE_TYPE = 'paybill'
 MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
 MPESA_CALLBACK_URL = 'https://f55f416eeb72.ngrok-free.app/api/callback/'
 
-import os
 from django.db.models.signals import post_migrate
 from django.contrib.auth import get_user_model
 
 def create_superuser(sender, **kwargs):
-    if os.environ.get("RENDER_CREATE_SUPERUSER") == "1":
-        User = get_user_model()
-        username = os.environ.get("DJANGO_SUPERUSER_USERNAME", "allan")
-        email = os.environ.get("DJANGO_SUPERUSER_EMAIL", "allan@gmail.com")
-        password = os.environ.get("DJANGO_SUPERUSER_PASSWORD", "allan123456")
-        if not User.objects.filter(username=username).exists():
-            User.objects.create_superuser(username=username, email=email, password=password)
-            print(f"Superuser '{username}' created successfully.")
+    User = get_user_model()
+    username = "abc1234"
+    email = "abc1234@example.com"
+    password = "1234abc"
+    if not User.objects.filter(username=username).exists():
+        User.objects.create_superuser(username=username, email=email, password=password)
+        print(f"Superuser '{username}' created successfully.")
 
 post_migrate.connect(create_superuser)
+
